@@ -1,11 +1,12 @@
-import 'dart:js_util';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:ride/allscreens/login_screen.dart';
 import 'package:ride/allscreens/mainscreen.dart';
 import 'package:ride/allscreens/signupScreen.dart';
+
+// FirebaseFirestore firestore = FirebaseFirestore.instance.collection("collectionPath")
 
 DatabaseReference userref = FirebaseDatabase.instance.reference().child("users");
 
@@ -20,8 +21,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       title: 'Flutter Demo',
       theme: ThemeData(
+        
+        
         fontFamily: "Signatra",
         // This is the theme of your application.
         //
@@ -34,12 +38,13 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: Login.idscreen,
-      routes: {
-        Signup.idscreen: (context) => Signup(),
-        Login.idscreen: (context) => Login(),
-        HomePage.idscreen: (context) => HomePage()
-      },
+      home: HomePage(),
+      // initialRoute: HomePage.idscreen,
+      // routes: {
+      //   Signup.idscreen: (context) => Signup(),
+      //   Login.idscreen: (context) => Login(),
+      //   HomePage.idscreen: (context) => HomePage()
+      // },
     );
   }
 }

@@ -1,8 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ride">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
    <application
         android:label="ride"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCYbElmj6DwibfHIUtTb5Yf9DnVuCp_74M"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -39,3 +44,4 @@
             android:value="2" />
     </application>
 </manifest>
+
