@@ -35,6 +35,8 @@ dependencies:
   google_maps_flutter: ^2.0.6
   cloud_firestore:
   geolocator: ^7.4.0
+  http: ^0.13.3
+  provider: ^6.0.0
 
   
 

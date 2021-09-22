@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:ride/Assistance/asssistanceMethod.dart';
+import 'package:ride/DataHandler/appData.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -36,6 +39,8 @@ class _HomePageState extends State<HomePage> {
     CameraPosition cameraPosition = new CameraPosition(target: latlanPosition, zoom: 14);
 
     newGoogleMapController.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+    String address = await AssistanceMethod.searchAddress(position, context);
+    print("This is your address :: " + address);
 
 
   }
@@ -64,6 +69,7 @@ class _HomePageState extends State<HomePage> {
                 _controllerGoogleMap.complete(controller);
                 newGoogleMapController = controller;
                 locatePosition();
+                
                 
               },
             ),
@@ -134,7 +140,10 @@ class _HomePageState extends State<HomePage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Add Home",style: TextStyle(fontFamily: "Regular" )),
+                              Text(
+                                Provider.of<AppData>(context).pickupLocation != null ?
+                                Provider.of<AppData>(context).pickupLocation.placeName : "Add Home"
+                                ,style: TextStyle(fontFamily: "Regular" )),
                               SizedBox(height:4),
                               Text("Your home address", style:  TextStyle(color: Colors.grey[300], fontSize: 12),)
                             ],
